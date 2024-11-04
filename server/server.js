@@ -1,11 +1,12 @@
 const WebSocket = require('ws');
 const AWS = require('aws-sdk');
+require('dotenv').config();
 
 // Configure AWS SDK to use DynamoDB
 AWS.config.update({
-    region: 'us-east-1',  // Replace with your region
-    accessKeyId: 'AKIAW3MEDCEOXKD4VZ6V',  // Replace with your actual access key
-    secretAccessKey: 'ECmL7sLG3i+S+1kNPL3JrTccC4mT5Q+mqQX10CJs'  // Replace with your actual secret key
+    region: process.env.AWS_REGION,
+    accessKeyId: process.env.AWS_ACCESS_KEY_ID,
+    secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY
 });
 
 const dynamoDb = new AWS.DynamoDB.DocumentClient();
